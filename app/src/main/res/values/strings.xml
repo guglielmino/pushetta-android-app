@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/tools">
+
+    <string name="app_name" translatable="false">Pushetta</string>
+    <string name="action_search" translatable="false">Search</string>
+    <string name="action_compose" translatable="false">Compose</string>
+    <string name="title_activity_channel_search" translatable="false">ChannelSearchActivity</string>
+    <string name="title_section1" translatable="false">Section 1</string>
+    <string name="title_section2" translatable="false">Section 2</string>
+    <string name="title_section3" translatable="false">Section 3</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="action_add_custom" translatable="false">Add custom channel</string>
+    <string name="search_hint" translatable="false">Search a Channel</string>
+
+    <!-- generic messages -->
+    <string name="gen_channel_subscribed" translatable="false">Channel %s subscribed</string>
+    <string name="gen_channel_request_sent" translatable="false">A subscription request for %s was sent</string>
+
+    <!-- Error messages -->
+    <string name="error_need_pushes" translatable="false">This App need push notifications to work</string>
+    <string name="error_getting_subscriptions" translatable="false">Can\'t load Channel\'s subscriptions, retry later</string>
+    <string name="error_channel_does_not_exist" translatable="false">Channel does not exist</string>
+    <string name="error_cant_subscribe_channel" translatable="false">Can\'t subscribe the Channel, retry later</string>
+    <string name="error_cant_find_any_channel" translatable="false">Can\'t find any Channel</string>
+
+    <!-- Tab names -->
+    <string name="tab_name_suggestions" translatable="false">DISCOVER</string>
+    <string name="tab_name_pushes" translatable="false">NOTIFICATIONS</string>
+    <string name="tab_name_sub_channels" translatable="false">SUBSCRIPTIONS</string>
+
+    <!-- Drawer menu names -->
+    <string-array name="drawer_menu_array">
+        <item>DISCOVER</item>
+        <item>NOTIFICATIONS</item>
+        <item>SUBSCRIPTIONS</item>
+    </string-array>
+
+    <string name="drawer_open">Drawer open</string>
+    <string name="drawer_close">Drawer close</string>
+
+    <!-- Stringhe usate nei layout -->
+    <string name="content_description_channel_icon" translatable="false">Channel icon</string>
+    <string name="content_description_preview_url" translatable="false">Preview url</string>
+    
+    <string name="empty_notifications_list" translatable="false">No notification yet</string>
+    <string name="empty_suggestions_list" translatable="false">No suggestion</string>
+    <string name="empty_subscriptions_list" translatable="false">No subscriptions</string>
+    <string name="empty_search_list" translatable="false">No results</string>
+    <string name="placeholder_channel_name" translatable="false">Channel Name</string>
+    <string name="placeholder_message_text" translatable="false">Sample message text</string>
+    <string name="placeholder_channel_icon" translatable="false">Channel Icon</string>
+    <string name="content_desc_icon_channel" translatable="false">Channel icon</string>
+    <string name="btn_label_unsubscribe" translatable="false">Unsubscribe</string>
+
+    <!-- Stringhe per il dialog di richiesta channel -->
+    <string name="channel_input_title" translatable="false">Subscribe Channel by name</string>
+    <string name="channel_input_confirm" translatable="false">Confirm</string>
+    <string name="channel_input_cancel" translatable="false">Cancel</string>
+    <string name="channel_input_hint" translatable="false">Channel name</string>
+    <string name="channel_input_message" translatable="false">If You know the name of a channel to subscribe, write the name and press \'Confirm\'</string>
+    <string name="label_section_subscribed" translatable="false">SUBSCRIBED</string>
+    <string name="label_section_pending" translatable="false">PENDING REQUESTS</string>
+    <string name="label_section_rejected" translatable="false">REJECTED REQUESTS</string>
+
+</resources>

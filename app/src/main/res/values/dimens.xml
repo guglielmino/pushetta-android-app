@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- TextSize per i TextView -->
+    <dimen name="big_title_text_size">20sp</dimen>
+    <dimen name="normal_title_text_size">14sp</dimen>
+    <dimen name="small_title_text_size">12sp</dimen>
+    <dimen name="mega_text_size">40sp</dimen>
+
+</resources>

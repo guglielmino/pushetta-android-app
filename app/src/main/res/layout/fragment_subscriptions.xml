@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp" >
+
+    <com.applidium.headerlistview.HeaderListView
+        android:id="@+id/listRequests"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:divider="#00000000"
+        android:dividerHeight="5dp"
+        android:drawSelectorOnTop="true" />
+
+    <TextView
+        android:id="@+id/emptySubscriptions"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:shadowColor="@color/White"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="0.6"
+        android:text="@string/empty_subscriptions_list"
+        android:textColor="@color/Grey"
+        android:textSize="@dimen/mega_text_size"
+        android:visibility="gone" />
+
+</LinearLayout>
