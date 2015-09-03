@@ -107,12 +107,13 @@ public class FragmentPushes extends ListFragment implements
 				PushMessageTable.COLUMN_DATE_CREATED,
 				PushMessageTable.COLUMN_DATE_EXPIRE,
 				PushMessageTable.COLUMN_SYNC_READ,
-				PushMessageTable.COLUMN_PREVIEW_URL };
+				PushMessageTable.COLUMN_PREVIEW_URL,
+				PushMessageTable.COLUMN_DELETED};
 
 		CursorLoader cursorLoader = new CursorLoader(this.getActivity(),
 				PushMessageContentProvider.CONTENT_URI, projection,
 				PushMessageTable.COLUMN_DATE_EXPIRE
-						+ " > datetime()", // solo push non scaduti
+						+ " > datetime() and deleted=0", // solo push non scaduti e non cancellati
 				null, PushMessageTable.COLUMN_DATE_CREATED + " DESC");
 		return cursorLoader;
 	}

@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class PushettaDatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "pushetta.db";
-	// TODO: La version diventa 2 per scatenare l'upgrade dello schema DB
-	private static final int DATABASE_VERSION = 2;
+	// TODO: Versioning per gestire le migrazioni di schema
+	private static final int DATABASE_VERSION = 3;
 
 	public PushettaDatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -170,7 +170,8 @@ public class PushMessageContentProvider extends ContentProvider {
 				PushMessageTable.COLUMN_DATE_CREATED,
 				PushMessageTable.COLUMN_DATE_EXPIRE,
 				PushMessageTable.COLUMN_SYNC_READ,
-				PushMessageTable.COLUMN_PREVIEW_URL
+				PushMessageTable.COLUMN_PREVIEW_URL,
+				PushMessageTable.COLUMN_DELETED
 				};
 		
 		if (projection != null) {

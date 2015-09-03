@@ -14,7 +14,8 @@ public class PushMessageTable {
 	public static final String COLUMN_DATE_EXPIRE = "expire";
 	public static final String COLUMN_SYNC_READ = "is_sync_read";
 	public static final String COLUMN_PREVIEW_URL = "preview_url";
-	
+	public static final String COLUMN_DELETED = "deleted";
+
 	// Database creation SQL statement
 	private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_PUSHMESSAGE + "(" + COLUMN_ID
@@ -23,7 +24,9 @@ public class PushMessageTable {
 			+ COLUMN_CHANNEL_ICON_IMAGE + " text not null,"
 			+ COLUMN_DATE_CREATED + " datetime null," + COLUMN_DATE_EXPIRE
 			+ " datetime null," + COLUMN_SYNC_READ
-			+ " integer not null default 0," + COLUMN_PREVIEW_URL + " text null" + ");";
+			+ " integer not null default 0," + COLUMN_PREVIEW_URL + " text null,"
+			+ COLUMN_DELETED + " integer not null default 0"
+			+ ");";
 
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(CREATE_TABLE);
@@ -37,6 +40,9 @@ public class PushMessageTable {
 		
 		if(oldVersion == 1 && newVersion == 2){
 			database.execSQL("ALTER TABLE  " + TABLE_PUSHMESSAGE + " ADD COLUMN " + COLUMN_PREVIEW_URL + " text null");
+		}
+		else if(oldVersion == 2 && newVersion == 3) {
+			database.execSQL("ALTER TABLE  " + TABLE_PUSHMESSAGE + " ADD COLUMN " + COLUMN_DELETED + " integer default 0");
 		}
 		else{
 			database.execSQL("DROP TABLE IF EXISTS " + TABLE_PUSHMESSAGE);
