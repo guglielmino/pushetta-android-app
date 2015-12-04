@@ -13,16 +13,24 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter.ViewBinder;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gumino.core.contentprovider.PushMessageContentProvider;
 import com.gumino.core.database.PushMessageTable;
 import com.gumino.pushetta.adapters.PushCursorAdapter;
 import com.gumino.pushetta.util.UIHelpers;
+
+import com.daimajia.swipe.SwipeLayout;
+
 
 public class FragmentPushes extends ListFragment implements
 		LoaderManager.LoaderCallbacks<Cursor> {
@@ -37,9 +45,59 @@ public class FragmentPushes extends ListFragment implements
 
 		fillData();
 
-		View rootView = inflater.inflate(
+		final View rootView = inflater.inflate(
 				com.gumino.pushetta.R.layout.fragment_pushes, container, false);
-		return rootView;
+
+
+        final ListView listViewPushes = (ListView )rootView.findViewById(android.R.id.list);
+        listViewPushes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ((SwipeLayout) (listViewPushes.getChildAt(position - listViewPushes.getFirstVisiblePosition()))).open(true);
+            }
+        });
+
+        listViewPushes.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.e("ListView", "OnTouch");
+                return false;
+            }
+        });
+        listViewPushes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                return true;
+            }
+        });
+        listViewPushes.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                Log.e("ListView", "onScrollStateChanged");
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
+
+        listViewPushes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("ListView", "onItemSelected:" + position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("ListView", "onNothingSelected:");
+            }
+        });
+
+
+
+        return rootView;
 	}
 
 	private void fillData() {
@@ -69,33 +127,33 @@ public class FragmentPushes extends ListFragment implements
 		// e dell'anteprima dell'url se presente
 		adapter.setViewBinder(new ViewBinder() {
 
-		    public boolean setViewValue(View aView, Cursor aCursor, int aColumnIndex) {
+            public boolean setViewValue(View aView, Cursor aCursor, int aColumnIndex) {
 
-		        if (aColumnIndex == 5) {
-		        		String createDate = aCursor.getString(4);
-		        		Date createdOn = UIHelpers.getDateFromUIString(createDate);
-		        		
-		                String expireDate = aCursor.getString(aColumnIndex);
-		                Date expireOn = UIHelpers.getDateFromUIString(expireDate);
-		                
-		                TextView textView = (TextView) aView;
-		                String timeStamp = String.format("Sent %s / expire %s",
-		                		DateFormat.getMediumDateFormat(getActivity()).format(createdOn),
-		                		DateFormat.getMediumDateFormat(getActivity()).format(expireOn));
-		                
-		                textView.setText(timeStamp);
-		                return true;
-		         }
-		        
+                if (aColumnIndex == 5) {
+                    String createDate = aCursor.getString(4);
+                    Date createdOn = UIHelpers.getDateFromUIString(createDate);
 
-		         return false;
-		    }
-		});
+                    String expireDate = aCursor.getString(aColumnIndex);
+                    Date expireOn = UIHelpers.getDateFromUIString(expireDate);
+
+                    TextView textView = (TextView) aView;
+                    String timeStamp = String.format("Sent %s / expire %s",
+                            DateFormat.getMediumDateFormat(getActivity()).format(createdOn),
+                            DateFormat.getMediumDateFormat(getActivity()).format(expireOn));
+
+                    textView.setText(timeStamp);
+                    return true;
+                }
+
+
+                return false;
+            }
+        });
 		
 
 		setListAdapter(adapter);
 
-		((MainActivity) getActivity()).hideProgress();
+        ((MainActivity) getActivity()).hideProgress();
 	}
 
 	@Override

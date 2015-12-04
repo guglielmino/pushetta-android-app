@@ -1,78 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:baselineAligned="false"
-    android:orientation="vertical" >
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:id="@+id/swipeContainer">
+
+    <LinearLayout
+        android:tag="Bottom2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/trash"
+            android:src="@drawable/trash"
+            android:layout_width="70dp"
+            android:background="@drawable/red"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="left"
-        android:layout_weight="3"
-        android:orientation="horizontal" >
-
-        <!-- Icona del canale -->
-
-        <ImageView
-            android:id="@+id/iconChannel"
-            android:layout_width="80dip"
-            android:layout_height="80dip"
-            android:layout_gravity="left"
-            android:contentDescription="@string/content_description_channel_icon"
-            android:src="@drawable/ic_launcher" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:baselineAligned="false"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="left"
+            android:layout_weight="3"
+            android:orientation="horizontal" >
 
-            android:orientation="vertical" >
+            <!-- Icona del canale -->
 
-            <!-- Nome del canale oggetto del push -->
+            <ImageView
+                android:id="@+id/iconChannel"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_gravity="left"
+                android:contentDescription="@string/content_description_channel_icon"
+                android:src="@drawable/ic_launcher" />
 
-            <TextView
-                android:id="@+id/textChannelName"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="ChannelName"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="@dimen/big_title_text_size" />
 
-            <!-- Timestamp messaggio -->
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/txtTimeStamp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dip"
-                android:layout_marginTop="2dip"
-                android:gravity="left"
-                android:text="Expire on 5:45"
-                android:textColor="#808080"
-                android:textStyle="normal"
-                android:width="40dp" />
+                <!-- Nome del canale oggetto del push -->
+
+                <TextView
+                    android:id="@+id/textChannelName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="ChannelName"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="@dimen/big_title_text_size" />
+
+                <!-- Timestamp messaggio -->
+
+                <TextView
+                    android:id="@+id/txtTimeStamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="2dip"
+                    android:gravity="left"
+                    android:text="Expire on 5:45"
+                    android:textColor="#808080"
+                    android:textStyle="normal"
+                    android:width="40dp" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textMessageBody"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dip"
+            android:linksClickable="true"
+            android:text="bla bla bla"
+            android:textColor="?android:textColorSecondary" />
+
+        <ImageView
+            android:id="@+id/imgPreviewUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_description_preview_url"
+            android:src="@drawable/ic_launcher" />
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textMessageBody"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="2dip"
-        android:linksClickable="true"
-        android:text="bla bla bla"
-        android:textColor="?android:textColorSecondary" />
-
-    <ImageView
-        android:id="@+id/imgPreviewUrl"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/content_description_preview_url"
-        android:src="@drawable/ic_launcher" />
-
-</LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

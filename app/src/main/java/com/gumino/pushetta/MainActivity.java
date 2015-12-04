@@ -46,6 +46,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+
+import com.daimajia.swipe.SwipeLayout;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -129,8 +131,9 @@ public class MainActivity extends Activity  implements DrawerMenuAdapter.OnItemC
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            selectItem(0);
+            selectItem(1);
         }
+
 
         context = getApplicationContext();
 
@@ -168,35 +171,34 @@ public class MainActivity extends Activity  implements DrawerMenuAdapter.OnItemC
 		IPushettaServiceClient client = PushettaClientFactory.getClient();
 		client.checkVersion(new PushettaClientResponseHandler<CheckVersion>() {
 
-			@Override
-			public void onSuccess(CheckVersion result) {
-				if (result.getNeed_update()) {
-					UIHelpers.showInfoMessage(MainActivity.this,
-							result.getMessage(), new OnClickListener() {
+                                @Override
+                                public void onSuccess(CheckVersion result) {
+                                    if (result.getNeed_update()) {
+                                        UIHelpers.showInfoMessage(MainActivity.this,
+                                                result.getMessage(), new OnClickListener() {
 
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									finish();
-								}
-							});
-				} else if (!result.getMessage().isEmpty()) {
-					UIHelpers.showErrorMessage(MainActivity.this,
-							result.getMessage());
-				}
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog,
+                                                                        int which) {
+                                                        finish();
+                                                    }
+                                                });
+                                    } else if (!result.getMessage().isEmpty()) {
+                                        UIHelpers.showErrorMessage(MainActivity.this,
+                                                result.getMessage());
+                                    }
 
-			}
+                                }
 
-			@Override
-			public void onError(int httpCode, String message) {
-				// TODO Auto-generated method stub
+                                @Override
+                                public void onError(int httpCode, String message) {
+                                    // TODO Auto-generated method stub
 
-			}
+                                }
 
-		}
+                            }
 
-		);
-
+        );
 	}
 
 	@Override
