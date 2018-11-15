@@ -18,10 +18,12 @@ import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.config.Configuration;
 
 
+
 public class PushettaApplication extends Application {
 	// instance
 	private static PushettaApplication instance = null;
 	private JobManager jobManager;
+
 	
 	public Stack<Integer> readMessagesIds;
 	
@@ -56,6 +58,8 @@ public class PushettaApplication extends Application {
 		super.onCreate();
 		// provide an instance for our static accessors
 		instance = this;
+
+
 		configureJobManager();
 		
 		// Inizializzazione della lista messaggi letti

@@ -16,19 +16,14 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 
 import android.app.SearchManager;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.support.v4.content.LocalBroadcastManager;
-
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,16 +33,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.view.Window;
+
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-
-import com.daimajia.swipe.SwipeLayout;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -68,8 +61,6 @@ public class MainActivity extends Activity  implements DrawerMenuAdapter.OnItemC
 	private String regid;
 	private Context context;
 	private GoogleCloudMessaging gcm;
-	private BroadcastReceiver resultReceiver;
-
 
 	// Gestione del Drawer
     private DrawerLayout mDrawerLayout;
@@ -147,12 +138,6 @@ public class MainActivity extends Activity  implements DrawerMenuAdapter.OnItemC
 
 		}
 
-		// Local broadcast receiver per la gestione degli AlertDialog da
-		// messaggi di background
-		resultReceiver = createBroadcastReceiver();
-		LocalBroadcastManager.getInstance(this).registerReceiver(
-				resultReceiver,
-				new IntentFilter(PushettaConsts.INTENT_FILTER_ALERTDIALOG));
 
 		// Check device for Play Services APK.
 		if (checkPlayServices()) {
@@ -609,6 +594,7 @@ public class MainActivity extends Activity  implements DrawerMenuAdapter.OnItemC
 	 * Receiver per l'intent broadcast (locale) usato per i messaggi provenienti
 	 * da thread non UI
 	 */
+	/*
 
 	private BroadcastReceiver createBroadcastReceiver() {
 		return new BroadcastReceiver() {
@@ -626,7 +612,7 @@ public class MainActivity extends Activity  implements DrawerMenuAdapter.OnItemC
 			}
 
 		};
-	}
+	}*/
 
 	/**
 	 * Gestione del subscribe al canale dall view delle suggestion
